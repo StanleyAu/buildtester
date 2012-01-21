@@ -16,6 +16,15 @@ var GAS_RATE_3p = 0.67
                     //for gas, 2 is optimal number
                     //if we go 3/geyser, it is reduced to 0.67
 
+/*
+    resource object:
+    _arat: aggregated resource allocation timeline, an array with each entry as a timeslice
+            representing in-game seconds, each entry is an array [mineral, gas]
+    _ract: resource allocation change timeline, an array with resource changes such as worker and geyser addition/removal
+            might be unsorted
+    _arat_dirty: set if _ract has changed so that _arat needs to be re-aggregated
+*/
+
                     
 function init(d){
     //d is duration of the calculation
