@@ -104,6 +104,7 @@ globalGas = 0;
 maxSupply = 10;
 globalSupply = 0;
 globalList = new Array();
+activeList = new Array();
 lastItem = null;
 window.R.init( maxTime );
 
@@ -179,36 +180,24 @@ function validateItem( item )
 {
     console.log( 'validate' );
 
-    if ( item.supply > ( maxSupply - globalSupply ) )
-    {
-        return false;
-    }
-
-    if ( item.requires != null )
-    {
-        Prerequisites :
-
-        for ( p in item.requires )
-        {
-            for ( i in globalList )
-            {
-				// Should use sets
-				// Create object var tech = {}
-				// When new tech or building acquired:
-				//	tech[new_tech_name] = true
-				// Though for units, we would need to be able
-				// to distinguish buildings from units for producer
-				// Need to address problem of what tech we have
-				// at time t
-                if ( globalList[i].name == item.requires[p] )
-                {
-                    continue Prerequisites;
-                }
-            }
-
-            return false;
-        }
-    }
+    //
+    // if ( typeof item.class.prerequisites != 'undefined' )
+    // {
+    // Prerequisites :
+    //
+    // for ( p in item.class.prerequisites )
+    // {
+    // for ( i in globalList )
+    // {
+    // if ( globalList[i].class.name == item.class.prerequisites[p] )
+    // {
+    // continue Prerequisites;
+    // }
+    // }
+    //
+    // return false;
+    // }
+    // }
 
     while ( ( globalMins < item.mineral ) || ( globalGas < item.vespene ) )
     {
@@ -223,8 +212,11 @@ function validateItem( item )
 
         globalMins = window.R.getMin( globalTime );
         globalGas = window.R.getGas( globalTime );
-        console.log( globalMins );
-        console.log( globalGas );
+    }
+
+    if ( item.class.supply > ( maxSupply - globalSupply ) )
+    {
+        return false;
     }
 
     return true;
