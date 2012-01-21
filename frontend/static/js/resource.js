@@ -71,22 +71,22 @@ function removeGasWorker(n, t){
 }
 
 function addMin(m, t){
-    this._ract.push([t, IM, n]);
+    this._ract.push([t, IM, m]);
     this._arat_dirty = true;
 }
 
 function addGas(m, t){
-    this._ract.push([t, IG, n]);
+    this._ract.push([t, IG, m]);
     this._arat_dirty = true;
 }
 
 function removeMin(m, t){
-    this._ract.push([t, IM, 0-n]);
+    this._ract.push([t, IM, 0-m]);
     this._arat_dirty = true;
 }
 
 function removeGas(m, t){
-    this._ract.push([t, IG, 0-n]);
+    this._ract.push([t, IG, 0-m]);
     this._arat_dirty = true;
 }
 
