@@ -1,4 +1,4 @@
-alert( 'Engine.js' );
+alert( "ui.js" );
 
 UNIT_SCV = 'scv';
 UNIT_Marine = 'marine';
@@ -103,7 +103,7 @@ globalMins = 0;
 globalGas = 0;
 maxSupply = 10;
 globalSupply = 0;
-globalList = new array();
+globalList = [];
 lastItem = null;
 R.init( maxTime );
 
@@ -114,10 +114,17 @@ function addItem( item )
     if ( validateItem( item ) )
     {
         item.startTime = globalTime;
-        globalTime += item.buildtime;
-        globalMins -= item.mineral;
-        globalGas -= item.vespene;
-        globalSupply += item.supply;
+        globalMins -= item.class.mineral;
+        globalGas -= item.class.vespene;
+        globalSupply += item.class.supply;
+
+        alert( maxTime );
+        alert( globalTime );
+        alert( maxSupply );
+        alert( globalSupply );
+        alert( globalMins );
+        alert( globalGas );
+        alert( globalList );
 
         if ( lastItem == null )
         {
@@ -132,6 +139,8 @@ function addItem( item )
         item.nextItem = null;
         lastItem = item;
         globalList.push( item );
+
+        $( "#timeline" ).append( "<p>" + item.class.name + "</p>" );
     }
 }
 
@@ -139,10 +148,9 @@ function removeItem( item )
 {
     alert( 'removeItem' );
 
-    globalTime += item.buildtime;
     globalMins += item.mineral;
     globalGas += item.vespene;
-    globalSupply -= item.supply;
+    globalSupply -= item.class.supply;
 
     item.previousItem.nextItem = item.nextItem;
     item.nextItem.previousItem = item.previousItem;
@@ -169,27 +177,32 @@ function removeLastItem()
 
 function validateItem( item )
 {
-    if ( item.supply > ( maxSupply - globalSupply ) )
+    alert( 'validate' );
+
+    if ( item.class.supply > ( maxSupply - globalSupply ) )
     {
         return false;
     }
 
     Prerequisites :
 
-    for ( p in item.prerequisites )
+    if ( typeof item.class.prerequisites != 'undefined' )
     {
-        for ( i in globalList )
+        for ( p in item.class.prerequisites )
         {
-            if ( globalList[i].class == item.prerequisites[p] )
+            for ( i in globalList )
             {
-                continue Prerequisites;
+                if ( globalList[i].class.name == item.class.prerequisites[p] )
+                {
+                    continue Prerequisites;
+                }
             }
-        }
 
-        return false;
+            return false;
+        }
     }
 
-    while ( ( globalMins < item.minerals ) || ( globalGas < item.vespene ) )
+    while ( ( globalMins < item.class.minerals ) || ( globalGas < item.class.vespene ) )
     {
         ++globalTime;
 
@@ -198,8 +211,8 @@ function validateItem( item )
             return false;
         }
 
-        globalMins = getMin( globalTime );
-        globalGas = getGas( globalTime );
+        globalMins = R.getMin( globalTime );
+        globalGas = R.getGas( globalTime );
     }
 
     return true;
