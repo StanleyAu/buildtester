@@ -96,20 +96,40 @@ UNIT_DarkShrine = 'dark_shrine';
 UNIT_RoboticsBay = 'robotics_bay';
 UNIT_FleetBeacon = 'fleet_beacon';
 
+R = NewResource();
+globalTime = 0;
+globalMins = 0;
+globalGas = 0;
+globalSupply = 0;
+maxSupply = 10;
+globalList = new array();
+lastItem = null;
+
 function addItem( item )
 {
     alert( 'addItem' );
 
     if ( validateItem( item ) )
     {
-        item.buildTime = globalTime;
-        globalTime += item.requiredTime;
-        globalMins -= item.requiredMins;
-        globalGas -= item.requiredGas;
+        item.startTime = globalTime;
+        globalTime += item.buildtime;
+        globalMins -= item.mineral;
+        globalGas -= item.vespene;
+        globalSupply += item.supply;
 
-        lastItem.nextItem = item;
-        item.previousItem = lastItem;
+        if ( lastItem == null )
+        {
+            item.previousItem = null;
+        }
+        else
+        {
+            item.previousItem = lastItem;
+            lastItem.nextItem = item;
+        }
+
         item.nextItem = null;
+        lastItem = item;
+        globalList.push( item );
     }
 }
 
@@ -117,29 +137,41 @@ function removeItem( item )
 {
     alert( 'removeItem' );
 
-    item.buildTime = globalTime;
-    globalTime += item.requiredTime;
-    globalMins -= item.requiredMins;
-    globalGas -= item.requiredGas;
+    globalTime += item.buildtime;
+    globalMins += item.mineral;
+    globalGas += item.vespene;
+    globalSupply -= item.supply;
 
-    lastItem.nextItem = item;
-    item.previousItem = lastItem;
-    item.nextItem = null;
+    item.previousItem.nextItem = item.nextItem;
+    item.nextItem.previousItem = item.previousItem;
 }
 
 function removeLastItem()
 {
     alert( 'removeLastItem' );
 
-    globalTime -= item.requiredTime;
-    globalMins += item.requiredMins;
-    globalGas += item.requiredGas;
+    globalTime -= item.buildtime;
+    globalMins += item.mineral;
+    globalGas += item.vespene;
 
-    lastItem.nextItem = null;
+    if ( lastItem != null )
+    {
+        lastItem = lastItem.previousItem;
+
+        if ( lastItem != null )
+        {
+            lastItem.nextItem = null;
+        }
+    }
 }
 
 function validateItem( item )
 {
+    if ( item.supply > ( maxSupply - globalSupply ) )
+    {
+        return false;
+    }
+
     Prerequisites :
 
     for ( p in item.prerequisites )
@@ -153,6 +185,13 @@ function validateItem( item )
         }
 
         return false;
+    }
+
+    while ( ( globalMins < item.minerals ) || ( globalGas < item.vespene ) )
+    {
+        ++globalTime;
+        globalMins = getMin( globalTime );
+        globalGas = getGas( globalTime );
     }
 
     return true;
