@@ -22,8 +22,9 @@ function setCommandPanel(race){
   //unit commands
   var units_html = '';
   for (var k in window.units[race]){
+	var name = window.units[race][k]['name']
     var cmd_html = '<div class=\'command-unit\' id=\''+k+'\'>'+
-                    '<img src=\'../static/img/'+race+'/'+k.replace(/[_-]/g, '')+'.png\'>'+
+                    '<img src=\'../static/img/'+race+'/'+k.replace(/[_-]/g, '')+'.png\' title=\''+name+'\'>'+
                     '</div>';
     units_html += cmd_html;
   }
@@ -31,8 +32,9 @@ function setCommandPanel(race){
   //building commands
   var buildings_html = '';
   for (var k in window.buildings[race]){
+	var name = window.buildings[race][k]['name']
     var cmd_html = '<div class=\'command-building\' id=\''+k+'\'>'+
-                    '<img src=\'../static/img/'+race+'/'+k.replace(/[_-]/g, '')+'.png\'>'+
+                    '<img src=\'../static/img/'+race+'/'+k.replace(/[_-]/g, '')+'.png\' title=\''+name+'\'>'+
                     '</div>';
     buildings_html += cmd_html;
   }
@@ -40,8 +42,9 @@ function setCommandPanel(race){
   //research commands
   var researches_html = '';
   for (var k in window.researches[race]){
+	var name = window.researches[race][k]['name']
     var cmd_html = '<div class=\'command-research\' id=\''+k+'\'>'+
-                    '<img src=\'../static/img/'+race+'/'+k.replace(/[_-]/g, '')+'.png\'>'+
+                    '<img src=\'../static/img/'+race+'/'+k.replace(/[_-]/g, '')+'.png\' title=\''+name+'\'>'+
                     '</div>';
     researches_html += cmd_html;
   }
@@ -49,7 +52,28 @@ function setCommandPanel(race){
   
   //setup the click event
   $('div.commands div').click(function(){
-    console.log($(this).attr('class'), $(this).attr('id'));
+	var cmd = $(this).attr('class')
+	var raw_id = $(this).attr('id')
+    console.log(cmd, raw_id);
+	if (cmd === 'command-action'){
+	} else {
+		var target
+		switch(cmd)
+		{
+			case 'command-building':
+			target = window.buildings[race][raw_id]
+			break;
+			case 'command-unit':
+			target = window.units[race][raw_id]
+			break;
+			case 'command-research':
+			target = window.researches[race][raw_id]
+			break;
+		}
+		// jQuery object deep copy
+		// should pass target to ui.addItem
+		target = console.log(jQuery.extend(true, {}, target))
+	}
   });
   
 }

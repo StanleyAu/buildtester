@@ -114,9 +114,9 @@ function addItem( item )
     if ( validateItem( item ) )
     {
         item.startTime = globalTime;
-        globalMins -= item.class.mineral;
-        globalGas -= item.class.vespene;
-        globalSupply += item.class.supply;
+        globalMins -= item.mineral;
+        globalGas -= item.vespene;
+        globalSupply += item.supply;
 
         console.log( maxTime );
         console.log( globalTime );
@@ -140,7 +140,7 @@ function addItem( item )
         lastItem = item;
         globalList.push( item );
 
-        $( '#timeline' ).append( "<p>" + item.class.name + "</p>" );
+        $( '#timeline' ).append( "<p>" + item.name + "</p>" );
     }
 }
 
@@ -150,7 +150,7 @@ function removeItem( item )
 
     globalMins += item.mineral;
     globalGas += item.vespene;
-    globalSupply -= item.class.supply;
+    globalSupply -= item.supply;
 
     item.previousItem.nextItem = item.nextItem;
     item.nextItem.previousItem = item.previousItem;
@@ -179,20 +179,28 @@ function validateItem( item )
 {
     console.log( 'validate' );
 
-    if ( item.class.supply > ( maxSupply - globalSupply ) )
+    if ( item.supply > ( maxSupply - globalSupply ) )
     {
         return false;
     }
 
-    if ( typeof item.class.prerequisites != 'undefined' )
+    if ( item.requires != null )
     {
         Prerequisites :
 
-        for ( p in item.class.prerequisites )
+        for ( p in item.requires )
         {
             for ( i in globalList )
             {
-                if ( globalList[i].class.name == item.class.prerequisites[p] )
+				// Should use sets
+				// Create object var tech = {}
+				// When new tech or building acquired:
+				//	tech[new_tech_name] = true
+				// Though for units, we would need to be able
+				// to distinguish buildings from units for producer
+				// Need to address problem of what tech we have
+				// at time t
+                if ( globalList[i].name == item.requires[p] )
                 {
                     continue Prerequisites;
                 }
@@ -202,7 +210,7 @@ function validateItem( item )
         }
     }
 
-    while ( ( globalMins < item.class.mineral ) || ( globalGas < item.class.vespene ) )
+    while ( ( globalMins < item.mineral ) || ( globalGas < item.vespene ) )
     {
         ++globalTime;
 
