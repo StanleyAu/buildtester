@@ -139,8 +139,7 @@ function addItem( item )
         item.nextItem = null;
         lastItem = item;
         globalList.push( item );
-
-        $( '#timeline' ).append( "<p>" + item.name + "</p>" );
+        addTimelineItem( item , item.startTime , item.class.buildtime );
     }
 }
 
