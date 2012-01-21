@@ -58,7 +58,7 @@ function setCommandPanel( race )
     {
         var cmd = $( this ).attr( 'class' )
         var raw_id = $( this ).attr( 'id' )
-        console.log( cmd , raw_id );
+        window.last_action_img = $(this).children('img').attr('src');
         if ( cmd === 'command-action' )
         {
         }

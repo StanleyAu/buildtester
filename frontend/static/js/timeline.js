@@ -38,7 +38,7 @@ function addTimelineItem(item, start, duration){
   var new_item_html = '<div style=\''+
             'position:absolute;'+
             'left: '+start+'px;'+
-            'width: '+duration+'px;'+
+            'width: '+(duration-1).toString()+'px;'+
             'top: '+idx*21+'px;'+
             '\'><img src=\''+window.last_action_img+
             '\'/></div>';
