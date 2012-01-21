@@ -1,17 +1,9 @@
 //protoss commands
 var c_protoss = {
-    action:{
-        gas2min:'',
-        min2gas:'',
-        offmin:'',
-        offgas:'',
-        onmin:'',
-        ongas:''
-    },
-    unit:{
-    },
-    building:{
-    },
-    upgrade:{
-    }
+    gas2min:'mineralprobe',
+    min2gas:'gasprobe',
+    offmin:'scout_out',
+    offgas:'scout_out',
+    onmin:'scout_in',
+    ongas:'scout_in'
 };

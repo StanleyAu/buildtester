@@ -14,7 +14,7 @@ body div.bottom-spacer img{
 body div.content-wrapper{
   border: solid 5px #000819;
   background-color: #041529;
-  height: 500px;
+  padding: 5px;
 }
 
 body div.content-wrapper div.box{
@@ -50,16 +50,24 @@ body div#select-race-wrapper div.box.select-race img{
   height: auto;
 }
 
-body div#core-wrapper{
+body div#core-wrapper #command-wrapper{
   text-align: center;
+  width: 370px;
 }
 
 body div#core-wrapper div.commands {
-  width: 22%;
-  margin: 5px;
+  width: 360px;
+  margin: 1px;
 }
 
-body div#core-wrapper div.commands img{
+body div#core-wrapper div.commands div{
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+body div#core-wrapper div.commands div img{
   width: 40px;
   height: 40px;
 }

@@ -1,112 +1,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta
-   http-equiv="Content-Type"
-   content="text/html; charset=utf-8" />
-<title>Starcraft 2 Build Timeline</title>
-<link
-   rel='stylesheet'
-   type="text/css"
-   href='../static/css/main.css' />
-<script
-   src='http://code.jquery.com/jquery-1.7.1.min.js'
-   type='text/javascript'></script>
-<script
-   src="../static/js/data/c_terran.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/c_zerg.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/c_protoss.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/u_terran.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/u_zerg.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/u_protoss.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/up_terran.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/up_zerg.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/up_protoss.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/b_terran.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/b_zerg.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/b_protoss.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/front.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/resource.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/main.js"
-   type="text/javascript"></script>
-<script
-   type="text/javascript"
-   src="../static/js/ui.js">
-    
-</script>
-<link
-   rel="stylesheet"
-   type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Starcraft 2 Build Timeline</title>
+        <link rel='stylesheet' type="text/css" href='../static/css/main.css'/>
+        <script src='http://code.jquery.com/jquery-1.7.1.min.js' type='text/javascript'></script>
+        <script src="../static/js/data/c_terran.js" type="text/javascript"></script>
+        <script src="../static/js/data/c_zerg.js" type="text/javascript"></script>
+        <script src="../static/js/data/c_protoss.js" type="text/javascript"></script>
+        <script src="../static/js/data/u_terran.js" type="text/javascript"></script>
+        <script src="../static/js/data/u_zerg.js" type="text/javascript"></script>
+        <script src="../static/js/data/u_protoss.js" type="text/javascript"></script>
+        <script src="../static/js/data/up_terran.js" type="text/javascript"></script>
+        <script src="../static/js/data/up_zerg.js" type="text/javascript"></script>
+        <script src="../static/js/data/up_protoss.js" type="text/javascript"></script>
+        <script src="../static/js/data/b_terran.js" type="text/javascript"></script>
+        <script src="../static/js/data/b_zerg.js" type="text/javascript"></script>
+        <script src="../static/js/data/b_protoss.js" type="text/javascript"></script>
+        <script src="../static/js/front.js" type="text/javascript"></script>
+        <script src="../static/js/resource.js" type="text/javascript"></script>
+        <script src="../static/js/main.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css">
 </head>
 <body>
-   <div class='top-spacer'>
-      <img src='../static/img/sc2_bg_top.png' />
-   </div>
-   <div
-      class='content-wrapper'
-      id='select-race-wrapper'>
-      <div class='select-race-text'>PICK YOUR RACE</div>
-      <div
-         class='box select-race'
-         id='terran'>
-         <img src='../static/img/terran_logo.jpg' />
-      </div>
-      <div
-         class='box select-race'
-         id='protoss'>
-         <img src='../static/img/protoss_logo.jpg' />
-      </div>
-      <div
-         class='box select-race'
-         id='zerg'>
-         <img src='../static/img/zerg_logo.jpg' />
-      </div>
-   </div>
-   <div
-      class='content-wrapper'
-      id='core-wrapper'>
-      <div
-         class='box commands'
-         id='command-action'></div>
-      <div
-         class='box commands'
-         id='command-unit'></div>
-      <div
-         class='box commands'
-         id='command-building'></div>
-      <div
-         class='box commands'
-         id='command-research'></div>
-   </div>
-   <div class='bottom-spacer'>
-      <img src='../static/img/sc2_bg_bottom.png' />
-   </div>
+    <div class='top-spacer'>
+      <img src='../static/img/sc2_bg_top.png'/>
+    </div>
+    <div class='content-wrapper' id='select-race-wrapper'>
+        <div class='select-race-text'>PICK YOUR RACE</div>
+        <div class='box select-race' id='terran'>
+        <img src='../static/img/terran_logo.jpg'/></div>
+        <div class='box select-race' id='protoss'>
+        <img src='../static/img/protoss_logo.jpg'/></div>
+        <div class='box select-race' id='zerg'>
+        <img src='../static/img/zerg_logo.jpg'/></div>
+    </div>
+    <div class='content-wrapper' id='core-wrapper'>
+        <div id='command-wrapper'>
+            <div class='box commands' id='command-action-wrapper'>
+            </div>
+            <div class='box commands' id='command-unit-wrapper'>
+            </div>
+            <div class='box commands' id='command-building-wrapper'>
+            </div>
+            <div class='box commands' id='command-research-wrapper'>
+            </div>
+        </div>
+    </div>
+    <div class='bottom-spacer'>
+      <img src='../static/img/sc2_bg_bottom.png'/>
+    </div>
 </body>
 </html>

@@ -13,27 +13,44 @@ function setCommandPanel(race){
   //action commands
   var actions_html = '';
   for (var k in window.actions[race]){
-    actions_html+='<img src=\'../static/img/'+race+'/'+window.actions[race][k]+'.png\'>';
+    var cmd_html = '<div class=\'command-action\' id=\''+k+'\'>'+
+                    '<img src=\'../static/img/'+race+'/'+window.actions[race][k]+'.png\'>'+
+                    '</div>';
+    actions_html += cmd_html;
   }
-  $('div#command-action').html(actions_html);
+  $('div#command-action-wrapper').html(actions_html);
   //unit commands
   var units_html = '';
   for (var k in window.units[race]){
-    units_html+='<img src=\'../static/img/'+race+'/'+k.replace('_', '')+'.png\'>';
+    var cmd_html = '<div class=\'command-unit\' id=\''+k+'\'>'+
+                    '<img src=\'../static/img/'+race+'/'+k.replace(/[_-]/g, '')+'.png\'>'+
+                    '</div>';
+    units_html += cmd_html;
   }
-  $('div#command-unit').html(units_html);
+  $('div#command-unit-wrapper').html(units_html);
   //building commands
   var buildings_html = '';
   for (var k in window.buildings[race]){
-    buildings_html+='<img src=\'../static/img/'+race+'/'+k.replace('_', '')+'.png\'>';
+    var cmd_html = '<div class=\'command-building\' id=\''+k+'\'>'+
+                    '<img src=\'../static/img/'+race+'/'+k.replace(/[_-]/g, '')+'.png\'>'+
+                    '</div>';
+    buildings_html += cmd_html;
   }
-  $('div#command-building').html(buildings_html);
+  $('div#command-building-wrapper').html(buildings_html);
   //research commands
   var researches_html = '';
   for (var k in window.researches[race]){
-    researches_html+='<img src=\'../static/img/'+race+'/'+k.replace('_', '')+'.png\'>';
+    var cmd_html = '<div class=\'command-research\' id=\''+k+'\'>'+
+                    '<img src=\'../static/img/'+race+'/'+k.replace(/[_-]/g, '')+'.png\'>'+
+                    '</div>';
+    researches_html += cmd_html;
   }
-  $('div#command-research').html(researches_html);
+  $('div#command-research-wrapper').html(researches_html);
+  
+  //setup the click event
+  $('div.commands div').click(function(){
+    console.log($(this).attr('class'), $(this).attr('id'));
+  });
   
 }
 
