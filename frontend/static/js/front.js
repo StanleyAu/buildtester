@@ -3,7 +3,7 @@ function loadUnits(filename) {
         var spec = []
         $.each(data, function(unit,specs) {
             //add image later
-            $("#unitbox").append('<p>'+'<ul>'+
+            $("#units").append('<p>'+'<ul>'+
                                  '<li>'+specs.mineral+'</li>'+
                                  '<li>'+specs.vespene+'</li>'+
                                  '<li>'+specs.supply+'</li>'+
