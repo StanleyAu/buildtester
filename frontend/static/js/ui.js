@@ -1,4 +1,4 @@
-alert( "ui.js" );
+//alert( "ui.js" );
 
 UNIT_SCV = 'scv';
 UNIT_Marine = 'marine';
@@ -96,20 +96,20 @@ UNIT_DarkShrine = 'dark_shrine';
 UNIT_RoboticsBay = 'robotics_bay';
 UNIT_FleetBeacon = 'fleet_beacon';
 
-R = NewResource();
-maxTime = 600;
+window.R = NewResource();
+maxTime = 10;
 globalTime = 0;
 globalMins = 0;
 globalGas = 0;
 maxSupply = 10;
 globalSupply = 0;
-globalList = [];
+globalList = new Array();
 lastItem = null;
-R.init( maxTime );
+window.R.init( maxTime );
 
 function addItem( item )
 {
-    alert( 'addItem' );
+    console.log( 'addItem' );
 
     if ( validateItem( item ) )
     {
@@ -177,17 +177,19 @@ function removeLastItem()
 
 function validateItem( item )
 {
-    alert( 'validate' );
+    console.log( 'validate' );
 
     if ( item.class.supply > ( maxSupply - globalSupply ) )
     {
         return false;
     }
 
-    Prerequisites :
+    alert( typeof item.class.prerequisites != 'undefined' );
 
     if ( typeof item.class.prerequisites != 'undefined' )
     {
+        Prerequisites :
+
         for ( p in item.class.prerequisites )
         {
             for ( i in globalList )
@@ -202,17 +204,21 @@ function validateItem( item )
         }
     }
 
-    while ( ( globalMins < item.class.minerals ) || ( globalGas < item.class.vespene ) )
+    while ( ( globalMins < item.class.mineral ) || ( globalGas < item.class.vespene ) )
     {
         ++globalTime;
+
+        console.log( globalTime );
 
         if ( globalTime > maxTime )
         {
             return false;
         }
 
-        globalMins = R.getMin( globalTime );
-        globalGas = R.getGas( globalTime );
+        globalMins = window.R.getMin( globalTime );
+        globalGas = window.R.getGas( globalTime );
+        console.log( globalMins );
+        console.log( globalGas );
     }
 
     return true;

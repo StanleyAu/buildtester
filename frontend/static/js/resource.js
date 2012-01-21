@@ -8,28 +8,29 @@ IM = 'im' // instant mineral
 IG = 'ig' // instant gas
 
 
-var MIN_RATE_16p = 0.72 //mineral per worker per second
-                    //assuming not over saturation
-var MIN_RATE_MULE = 2.26 //mineral per mule per second
+var MIN_RATE_16p = 0.72 // mineral per worker per second
+                    // assuming not over saturation
+var MIN_RATE_MULE = 2.26 // mineral per mule per second
 var GAS_RATE_2p = 0.8
 var GAS_RATE_3p = 0.67
-                    //for gas, 2 is optimal number
-                    //if we go 3/geyser, it is reduced to 0.67
+                    // for gas, 2 is optimal number
+                    // if we go 3/geyser, it is reduced to 0.67
 
 /*
-    resource object:
-    _arat: aggregated resource allocation timeline, an array with each entry as a timeslice
-            representing in-game seconds, each entry is an array [mineral, gas]
-    _ract: resource allocation change timeline, an array with resource changes such as worker and geyser addition/removal
-            might be unsorted
-    _arat_dirty: set if _ract has changed so that _arat needs to be re-aggregated
-*/
+ * resource object: _arat: aggregated resource allocation timeline, an array
+ * with each entry as a timeslice representing in-game seconds, each entry is an
+ * array [mineral, gas] _ract: resource allocation change timeline, an array
+ * with resource changes such as worker and geyser addition/removal might be
+ * unsorted _arat_dirty: set if _ract has changed so that _arat needs to be
+ * re-aggregated
+ */
 
                     
 function init(d){
-    //d is duration of the calculation
+    // d is duration of the calculation
     this._ract = [[0, MW, 6],
-             [0, MB, 1]]; //game starts with 6 mineral workers and a mining base
+             [0, MB, 1]]; // game starts with 6 mineral workers and a mining
+                            // base
     this._arat_dirty = true;
     this.duration = d;
 }
@@ -91,17 +92,17 @@ function removeGas(m, t){
 }
 
 function updateARAT(){
-    if (!this._arat_dirty){ //clean
+    if (!this._arat_dirty){ // clean
         return;
     }
-    var s_ract = this._ract.sort(function(a, b){return b[0] - a[0];});
-    var mb = 0; //mining base
-    var mg = 0; //mining geyser
-    var mw = 0; //mineral worker
-    var gw = 0; //gas worker
-    var ml = 0; //mule worker
+    var s_ract = this._ract.slice(0).sort(function(a, b){return b[0] - a[0];});
+    var mb = 0; // mining base
+    var mg = 0; // mining geyser
+    var mw = 0; // mineral worker
+    var gw = 0; // gas worker
+    var ml = 0; // mule worker
     
-    this._arat = [[0,0]]; //initial value
+    this._arat = [[0,0]]; // initial value
     for (var i = 1; i < this.duration; i++){
         var addmin = Math.min(mw*MIN_RATE_16p, mb*16*MIN_RATE_16p)+ml*MIN_RATE_MULE
         var addgas;
@@ -114,8 +115,8 @@ function updateARAT(){
         }
         
         this._arat.push([this._arat[i-1][0]+addmin, this._arat[i-1][1]+addgas]);
-        while (s_ract.length > 0 && s_ract[s_ract.length-1][0] <= i){
-            rac = s_ract.pop(); //[time, type, value]
+        while (( s_ract.length > 0 ) && ( s_ract[s_ract.length-1][0] <= i )){
+            rac = s_ract.pop(); // [time, type, value]
             if (rac[1] == MW){
                 mw += rac[2];
             }else if (rac[1] == GW){
@@ -143,6 +144,7 @@ function getGas(t){
 
 function getMin(t){
     this.updateARAT();
+    console.log(this);
     return this._arat[t][0];
 }
 
