@@ -90,7 +90,6 @@ function setCommandPanel( race )
             addItem( item );
         }
     } );
-
 }
 
 function initGlobal()

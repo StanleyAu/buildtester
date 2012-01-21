@@ -109,22 +109,13 @@ window.R.init( maxTime );
 
 function addItem( item )
 {
-    console.log( 'addItem' );
-
+    
     if ( validateItem( item ) )
     {
         item.startTime = globalTime;
         globalMins -= item.mineral;
         globalGas -= item.vespene;
         globalSupply += item.supply;
-
-        console.log( maxTime );
-        console.log( globalTime );
-        console.log( maxSupply );
-        console.log( globalSupply );
-        console.log( globalMins );
-        console.log( globalGas );
-        console.log( globalList );
 
         if ( lastItem == null )
         {
@@ -145,8 +136,7 @@ function addItem( item )
 
 function removeItem( item )
 {
-    console.log( 'removeItem' );
-
+    
     globalMins += item.mineral;
     globalGas += item.vespene;
     globalSupply -= item.supply;
@@ -157,8 +147,7 @@ function removeItem( item )
 
 function removeLastItem()
 {
-    console.log( 'removeLastItem' );
-
+    
     globalTime -= item.buildtime;
     globalMins += item.mineral;
     globalGas += item.vespene;
@@ -176,10 +165,7 @@ function removeLastItem()
 
 function validateItem( item )
 {
-    console.log( 'validate' );
-
     var currentTime = globalTime;
-
     // if ( typeof item.class.prerequisites != 'undefined' )
     // {
     // Prerequisites :
@@ -204,8 +190,7 @@ function validateItem( item )
     {
         ++globalTime;
 
-        console.log( globalTime );
-
+    
         if ( globalTime > maxTime )
         {
             globalTime = currentTime;

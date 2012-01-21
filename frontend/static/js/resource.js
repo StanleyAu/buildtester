@@ -144,7 +144,6 @@ function getGas(t){
 
 function getMin(t){
     this.updateARAT();
-    console.log(this);
     return this._arat[t][0];
 }
 

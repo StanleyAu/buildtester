@@ -82,6 +82,7 @@ body div#core-wrapper div#timeline {
   min-width: 400px;
   overflow-x: scroll;
   position:absolute;
+  padding-left: 10px;
   left: 380px;
   top: 6px;
   bottom: 6px;
@@ -90,14 +91,13 @@ body div#core-wrapper div#timeline {
 
 body div#core-wrapper div#timeline hr{
   height: 2px;
-  margin: 10px 10px 0px 10px;
+  margin: 10px 0px;
   background-color: white;
 }
 
 body div#core-wrapper div#timeline div#timemarker{
   position: relative;
-  margin-left: 10px;
-  margin-top: 0px;
+  margin: 0px;
 }
 
 body div#core-wrapper div#timeline div#timemarker div {
@@ -111,13 +111,19 @@ body div#core-wrapper div#timeline div#timemarker div {
 body div#core-wrapper div#timeline div#build-list {
   position: relative;
   min-height: 100px;
-  padding-left: 10px;  
   border-top: 1px solid #000819; 
   border-bottom: 1px solid #000819; 
 }
 
 body div#core-wrapper div#timeline div#build-list div{
-  height: 20px;
+  height: 19px;
+  background-color: #195999;
+  border-right: 1px solid #000819;
+  border-bottom: 1px solid #000819;
+}
+
+body div#core-wrapper div#timeline div#build-list div img{
+  height: 18px;
 }
 
 .hide{
