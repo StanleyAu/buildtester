@@ -104,7 +104,6 @@ globalGas = 0;
 maxSupply = 10;
 globalSupply = 0;
 globalList = new Array();
-activeList = new Array();
 lastItem = null;
 window.R.init( maxTime );
 
@@ -180,7 +179,8 @@ function validateItem( item )
 {
     console.log( 'validate' );
 
-    //
+    var currentTime = globalTime;
+
     // if ( typeof item.class.prerequisites != 'undefined' )
     // {
     // Prerequisites :
@@ -199,7 +199,9 @@ function validateItem( item )
     // }
     // }
 
-    while ( ( globalMins < item.mineral ) || ( globalGas < item.vespene ) )
+    var prereqTime = evaluateActive( item );
+
+    while ( ( globalTime < prereqTime ) || ( globalMins < item.mineral ) || ( globalGas < item.vespene ) )
     {
         ++globalTime;
 
