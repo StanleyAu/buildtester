@@ -127,12 +127,12 @@ function updateARAT(){
 }
 
 function getGas(t){
-    updateARAT();
+    this.updateARAT();
     return this._arat[t][1];
 }
 
 function getMin(t){
-    updateARAT();
+    this.updateARAT();
     return this._arat[t][0];
 }
 
