@@ -97,13 +97,15 @@ UNIT_RoboticsBay = 'robotics_bay';
 UNIT_FleetBeacon = 'fleet_beacon';
 
 R = NewResource();
+maxTime = 600;
 globalTime = 0;
 globalMins = 0;
 globalGas = 0;
-globalSupply = 0;
 maxSupply = 10;
+globalSupply = 0;
 globalList = new array();
 lastItem = null;
+R.init( maxTime );
 
 function addItem( item )
 {
@@ -190,6 +192,12 @@ function validateItem( item )
     while ( ( globalMins < item.minerals ) || ( globalGas < item.vespene ) )
     {
         ++globalTime;
+
+        if ( globalTime > maxTime )
+        {
+            return false;
+        }
+
         globalMins = getMin( globalTime );
         globalGas = getGas( globalTime );
     }
