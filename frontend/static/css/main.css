@@ -1,6 +1,7 @@
 body {
   background-color: white;
   margin: 0px;
+  min-width: 1050px;
 }
 
 body div.top-spacer img{
@@ -50,7 +51,12 @@ body div#select-race-wrapper div.box.select-race img{
   height: auto;
 }
 
+body div#core-wrapper{
+  position:relative;
+}
+
 body div#core-wrapper #command-wrapper{
+  display: inline-block;
   text-align: center;
   width: 370px;
 }
@@ -70,6 +76,48 @@ body div#core-wrapper div.commands div{
 body div#core-wrapper div.commands div img{
   width: 40px;
   height: 40px;
+}
+
+body div#core-wrapper div#timeline {
+  min-width: 400px;
+  overflow-x: scroll;
+  position:absolute;
+  left: 380px;
+  top: 6px;
+  bottom: 6px;
+  right: 10px;
+}
+
+body div#core-wrapper div#timeline hr{
+  height: 2px;
+  margin: 10px 10px 0px 10px;
+  background-color: white;
+}
+
+body div#core-wrapper div#timeline div#timemarker{
+  position: relative;
+  margin-left: 10px;
+  margin-top: 0px;
+}
+
+body div#core-wrapper div#timeline div#timemarker div {
+  width: 100px;
+  margin: 0px;
+  padding: 0px;
+  color: white;
+  display: inline-block;
+}
+
+body div#core-wrapper div#timeline div#build-list {
+  position: relative;
+  min-height: 100px;
+  padding-left: 10px;  
+  border-top: 1px solid #000819; 
+  border-bottom: 1px solid #000819; 
+}
+
+body div#core-wrapper div#timeline div#build-list div{
+  height: 20px;
 }
 
 .hide{

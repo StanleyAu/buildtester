@@ -5,6 +5,7 @@ function initSelectRace(){
     var race = $(this).attr('id');
     setCommandPanel(race);
     $('div#select-race-wrapper').addClass('hide');
+    initTimescale();
     $('div#core-wrapper').removeClass('hide');
   });
 }
@@ -57,12 +58,12 @@ function setCommandPanel(race){
     console.log(cmd, raw_id);
 	if (cmd === 'command-action'){
 	} else {
-		var target
+		var target;
 		switch(cmd)
 		{
 			case 'command-building':
-			target = window.buildings[race][raw_id]
-			break;
+			target = window.buildings[race][raw_id];
+            break;
 			case 'command-unit':
 			target = window.units[race][raw_id]
 			break;
@@ -72,7 +73,8 @@ function setCommandPanel(race){
 		}
 		// jQuery object deep copy
 		// should pass target to ui.addItem
-		target = console.log(jQuery.extend(true, {}, target))
+		target = console.log(jQuery.extend(true, {}, target));
+        addItem(target);
 	}
   });
   
