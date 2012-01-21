@@ -208,6 +208,7 @@ function validateItem( item )
 
         if ( globalTime > maxTime )
         {
+            globalTime = currentTime;
             return false;
         }
 
@@ -217,6 +218,7 @@ function validateItem( item )
 
     if ( item.class.supply > ( maxSupply - globalSupply ) )
     {
+        globalTime = currentTime;
         return false;
     }
 
