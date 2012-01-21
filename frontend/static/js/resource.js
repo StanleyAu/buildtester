@@ -1,3 +1,4 @@
+
 // resource types
     MW = 'mw' // mineral worker
     GW = 'gw' // gas worker
@@ -88,7 +89,7 @@ function updateARAT(){
     if (!_arat_dirty){ //clean
         return;
     }
-    var s_ract = _ract.sort(function(a, b){return b[0] - a[0]);
+    var s_ract = _ract.sort(function(a, b){return b[0] - a[0];});
     var mb = 0; //mining base
     var mg = 0; //mining geyser
     var mw = 0; //mineral worker
@@ -101,9 +102,9 @@ function updateARAT(){
         var addgas;
         if (gw <= mg*2){
             addgas = gw*GAS_RATE_2p;
-        else if(gw <= mg*3){
+        }else if(gw <= mg*3){
             addgas = gw*GAS_RATE_3p;
-        else{
+        }else{
             addgas = mg*3*GAS_RATE_3p;
         }
         _arat.push([_arat[i-1][0]+addmin, _arat[i-1][1]+addgas]);
