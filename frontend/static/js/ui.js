@@ -1,4 +1,4 @@
-//alert( "ui.js" );
+//console.log( "ui.js" );
 
 UNIT_SCV = 'scv';
 UNIT_Marine = 'marine';
@@ -97,7 +97,7 @@ UNIT_RoboticsBay = 'robotics_bay';
 UNIT_FleetBeacon = 'fleet_beacon';
 
 window.R = NewResource();
-maxTime = 10;
+maxTime = 300;
 globalTime = 0;
 globalMins = 0;
 globalGas = 0;
@@ -118,13 +118,13 @@ function addItem( item )
         globalGas -= item.class.vespene;
         globalSupply += item.class.supply;
 
-        alert( maxTime );
-        alert( globalTime );
-        alert( maxSupply );
-        alert( globalSupply );
-        alert( globalMins );
-        alert( globalGas );
-        alert( globalList );
+        console.log( maxTime );
+        console.log( globalTime );
+        console.log( maxSupply );
+        console.log( globalSupply );
+        console.log( globalMins );
+        console.log( globalGas );
+        console.log( globalList );
 
         if ( lastItem == null )
         {
@@ -140,13 +140,13 @@ function addItem( item )
         lastItem = item;
         globalList.push( item );
 
-        $( "#timeline" ).append( "<p>" + item.class.name + "</p>" );
+        $( '#timeline' ).append( "<p>" + item.class.name + "</p>" );
     }
 }
 
 function removeItem( item )
 {
-    alert( 'removeItem' );
+    console.log( 'removeItem' );
 
     globalMins += item.mineral;
     globalGas += item.vespene;
@@ -158,7 +158,7 @@ function removeItem( item )
 
 function removeLastItem()
 {
-    alert( 'removeLastItem' );
+    console.log( 'removeLastItem' );
 
     globalTime -= item.buildtime;
     globalMins += item.mineral;
@@ -183,8 +183,6 @@ function validateItem( item )
     {
         return false;
     }
-
-    alert( typeof item.class.prerequisites != 'undefined' );
 
     if ( typeof item.class.prerequisites != 'undefined' )
     {
