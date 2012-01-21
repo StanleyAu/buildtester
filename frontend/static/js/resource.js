@@ -133,6 +133,7 @@ function updateARAT(){
             }
         }
     }
+    this._arat_dirty = false;
 }
 
 function getGas(t){

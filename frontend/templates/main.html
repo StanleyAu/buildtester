@@ -1,164 +1,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta
-   http-equiv="Content-Type"
-   content="text/html; charset=utf-8" />
-<title>Starcraft 2 Build Timeline</title>
-<script
-   src="../static/js/front.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/main.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/resource.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/u_terran.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/u_zerg.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/u_protoss.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/up_terran.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/up_zerg.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/up_protoss.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/b_terran.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/b_zerg.js"
-   type="text/javascript"></script>
-<script
-   src="../static/js/data/b_protoss.js"
-   type="text/javascript"></script>
-<script
-   type="text/javascript"
-   src="../static/js/ui.js"></script>
-<link
-   rel="stylesheet"
-   type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Starcraft 2 Build Timeline</title>
+        <link rel='stylesheet' type="text/css" href='../static/css/main.css'/>
+        <script src='http://code.jquery.com/jquery-1.7.1.min.js' type='text/javascript'></script>
+        <script src="../static/js/data/c_terran.js" type="text/javascript"></script>
+        <script src="../static/js/data/c_zerg.js" type="text/javascript"></script>
+        <script src="../static/js/data/c_protoss.js" type="text/javascript"></script>
+        <script src="../static/js/data/u_terran.js" type="text/javascript"></script>
+        <script src="../static/js/data/u_zerg.js" type="text/javascript"></script>
+        <script src="../static/js/data/u_protoss.js" type="text/javascript"></script>
+        <script src="../static/js/data/up_terran.js" type="text/javascript"></script>
+        <script src="../static/js/data/up_zerg.js" type="text/javascript"></script>
+        <script src="../static/js/data/up_protoss.js" type="text/javascript"></script>
+        <script src="../static/js/data/b_terran.js" type="text/javascript"></script>
+        <script src="../static/js/data/b_zerg.js" type="text/javascript"></script>
+        <script src="../static/js/data/b_protoss.js" type="text/javascript"></script>
+        <script src="../static/js/front.js" type="text/javascript"></script>
+        <script src="../static/js/resource.js" type="text/javascript"></script>
+        <script src="../static/js/main.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css">
 </head>
 <body>
-   <div id="TerranUnits">
-      <button onclick="addItem({class:u_terran.scv})">SCV</button>
-      <button>Marine</button>
-      <button>Marauder</button>
-      <button>Reaper</button>
-      <button>Ghost</button>
-      <button>Hellion</button>
-      <button>Siege Tank</button>
-      <button>Thor</button>
-      <button>Viking</button>
-      <button>Medivac</button>
-      <button>Raven</button>
-      <button>Banshee</button>
-      <button>Battlecruiser</button>
-   </div>
-   <div id="ProtossUnits">
-      <button>Probe</button>
-      <button>Zealot</button>
-      <button>Stalker</button>
-      <button>Sentry</button>
-      <button>Observer</button>
-      <button>Immortal</button>
-      <button>Warp Prism</button>
-      <button>Colossus</button>
-      <button>Phoenix</button>
-      <button>Void Ray</button>
-      <button>High Templar</button>
-      <button>Dark Templar</button>
-      <button>Archon</button>
-      <button>Carrier</button>
-      <button>Mothership</button>
-   </div>
-   <div id="ZergUnits">
-      <button>Drone</button>
-      <button>Zergling</button>
-      <button>Queen</button>
-      <button>Hydralisk</button>
-      <button>Baneling</button>
-      <button>Overseer</button>
-      <button>Roach</button>
-      <button>Infestor</button>
-      <button>Mutalisk</button>
-      <button>Corruptor</button>
-      <button>Nydus Worm</button>
-      <button>Ultralisk</button>
-      <button>Brood Lord</button>
-   </div>
-   <div id="TerranStructures">
-      <button>Command Center</button>
-      <button>Orbital Command</button>
-      <button>Planetary Fortress</button>
-      <button>Supply Depot</button>
-      <button>Refinery</button>
-      <button>Barracks</button>
-      <button>Engineering Bay</button>
-      <button>Bunker</button>
-      <button>Missile Turret</button>
-      <button>Sensor Tower</button>
-      <button>Factory</button>
-      <button>Ghost Academy</button>
-      <button>Armory</button>
-      <button>Starport</button>
-      <button>Fusion Core</button>
-      <button>Tech Lab</button>
-      <button>Reactor</button>
-   </div>
-   <div id="ZergStructures">
-      <button>Hatchery</button>
-      <button>Overlord</button>
-      <button>Extractor</button>
-      <button>Spawning Pool</button>
-      <button>Evolution Chamber</button>
-      <button>Spine Crawler</button>
-      <button>Spore Crawler</button>
-      <button>Roach Warren</button>
-      <button>Baneling Nest</button>
-      <button>Lair</button>
-      <button>Hydralisk Den</button>
-      <button>Infestation Pit</button>
-      <button>Spire</button>
-      <button>Nydus Network</button>
-      <button>Hive</button>
-      <button>Ultralisk Cavern</button>
-      <button>Greater Spire</button>
-   </div>
-   <div id="ProtossStructures">
-      <button>Nexus</button>
-      <button>Pylon</button>
-      <button>Assimilator</button>
-      <button>Gateway</button>
-      <button>Forge</button>
-      <button>Photon Cannon</button>
-      <button>Warpgate</button>
-      <button>Cybernetics Core</button>
-      <button>Twilight Council</button>
-      <button>Robotics Facility</button>
-      <button>Stargate</button>
-      <button>Templar Archives</button>
-      <button>Dark Shrine</button>
-      <button>Robotics Bay</button>
-      <button>Fleet Beacon</button>
-   </div>
-   <div>
-      <div id="timeseek"></div>
-      <div id="timeline"></div>
-      <div id="datacol">
-         <div id="resources"></div>
-         <div id="buildings">
-            <div>
-               <div id="units"></div>
-            </div>
-         </div>
+    <div class='top-spacer'>
+      <img src='../static/img/sc2_bg_top.png'/>
+    </div>
+    <div class='content-wrapper' id='select-race-wrapper'>
+        <div class='select-race-text'>PICK YOUR RACE</div>
+        <div class='box select-race' id='terran'>
+        <img src='../static/img/terran_logo.jpg'/></div>
+        <div class='box select-race' id='protoss'>
+        <img src='../static/img/protoss_logo.jpg'/></div>
+        <div class='box select-race' id='zerg'>
+        <img src='../static/img/zerg_logo.jpg'/></div>
+    </div>
+    <div class='content-wrapper' id='core-wrapper'>
+        <div class='box commands' id='command-action'>
+        </div>
+        <div class='box commands' id='command-unit'>
+        </div>
+        <div class='box commands' id='command-building'>
+        </div>
+        <div class='box commands' id='command-research'>
+        </div>
+    </div>
+    <div class='bottom-spacer'>
+      <img src='../static/img/sc2_bg_bottom.png'/>
+    </div>
 </body>
 </html>

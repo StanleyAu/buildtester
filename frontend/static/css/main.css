@@ -1,0 +1,69 @@
+body {
+  background-color: white;
+  margin: 0px;
+}
+
+body div.top-spacer img{
+  width: 100%;
+}
+
+body div.bottom-spacer img{
+  width: 100%;
+}
+
+body div.content-wrapper{
+  border: solid 5px #000819;
+  background-color: #041529;
+  height: 500px;
+}
+
+body div.content-wrapper div.box{
+  border: solid 2px #000819;
+  background-color: #092949;
+  display:inline-block;
+}
+
+body div#select-race-wrapper {
+  height: 500px;
+  text-align: center;
+  padding-top: 80px;
+}
+
+body div#select-race-wrapper div.select-race-text{
+  font-family: impact, charcoal, sans-serif;
+  font-size: 40px;
+  color: white;
+}
+
+body div#select-race-wrapper div.box.select-race{
+  margin: 10px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+body div#select-race-wrapper div.box.select-race:hover {
+  opacity: 1;
+}
+
+body div#select-race-wrapper div.box.select-race img{
+  width: 300px;
+  height: auto;
+}
+
+body div#core-wrapper{
+  text-align: center;
+}
+
+body div#core-wrapper div.commands {
+  width: 22%;
+  margin: 5px;
+}
+
+body div#core-wrapper div.commands img{
+  width: 40px;
+  height: 40px;
+}
+
+.hide{
+  display: none !important;
+}
